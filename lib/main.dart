@@ -5,6 +5,7 @@ import 'AppBarMenu.dart';
 import 'CharacterCard.dart';
 import 'animalSound.dart';
 import 'animalSounds.dart';
+import 'loginPage.dart';
 
 void main(){
   runApp(MyApp());
@@ -53,6 +54,10 @@ class Home extends StatelessWidget {
               _TextMenu(
                 titleText: '4. AppBar Menu Page',
                 openWidget: AppBarMenu(),
+              ),
+              _TextMenu(
+                titleText: '5. Dice Programming',
+                openWidget: LoginPage(),
               ),
             ],
           ),

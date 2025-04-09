@@ -1,9 +1,19 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AppBarMenu extends StatelessWidget {
   const AppBarMenu({super.key});
+
+  void toastMessage(){
+    Fluttertoast.showToast(
+        msg: '플러터 토스트 메시지',
+        gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.redAccent,
+      fontSize: 20,
+      webPosition: "center",
+      toastLength: Toast.LENGTH_SHORT
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,14 +110,38 @@ class AppBarMenu extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: ElevatedButton(
-            onPressed:(){
-              ScaffoldMessenger.of(context)
-              .showSnackBar(
-                SnackBar(content: Text('스낵바 입니다.'))
-              );
-        },
-            child: Text('스낵바')
+        child:
+        Column(
+          mainAxisAlignment:  MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed:(){
+                  ScaffoldMessenger.of(context)
+                  .showSnackBar(
+                    SnackBar(content: Text('스낵바 입니다.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                    ),
+                      backgroundColor: Colors.teal,
+                      duration: Duration(milliseconds: 2000),
+                    )
+                  );
+            },
+                child: Text('스낵바')
+            ),
+            SizedBox(height: 10,),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              ),
+              onPressed: () {
+                toastMessage();
+              },
+              child: Text('Toast Message'),
+            ),
+          ],
         ),
       ),
       floatingActionButton:
